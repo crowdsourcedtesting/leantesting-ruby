@@ -1,2 +1,3 @@
 _tests.rb
 Gemfile.lock
+*.gem

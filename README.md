@@ -25,9 +25,9 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-require "leantesting"
+require 'leantesting'
 
-leantesting = Client.new
+leantesting = LeanTesting::Client.new
 leantesting.attachToken('<token>')
 
 # Listing projects
