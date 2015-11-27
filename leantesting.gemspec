@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
 	s.description = 'Lean Testing Ruby SDK'
 	s.authors     = ['Marcel Bontaș']
 	s.email       = ['marcel.bontas@yandex.ru']
-	s.files       = Dir['lib/**/*', 'tests/**/*']
+	s.files       = Dir['lib/**/*', 'tests/**/*'] + ['Gemfile', 'leantesting.gemspec', 'LICENSE', 'Rakefile', 'README.md']
 	s.homepage    = 'https://leantesting.com/'
 	s.license     = 'proprietary'
 	s.require_path= 'lib'
