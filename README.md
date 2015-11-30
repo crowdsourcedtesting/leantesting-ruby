@@ -39,7 +39,7 @@ projects = leantesting.projects.all()
 bugs = leantesting.projects.find(123).bugs.all()
 ```
 
-----
+## Methods
 
 - Get Current **Token**
 ```ruby
