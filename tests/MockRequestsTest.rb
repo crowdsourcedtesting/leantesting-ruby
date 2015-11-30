@@ -1,12 +1,12 @@
 require 'bundler'
 Bundler.require(:default, :test)
 
-require_relative '../lib/Client'
+require_relative '../lib/leantesting'
 
 class MockRequestsTest < MiniTest::Test
 
 	def setup
-		@client = Client.new
+		@client = LeanTesting::Client.new
 	end
 
 	private

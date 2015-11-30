@@ -1,7 +1,7 @@
 require 'bundler'
 Bundler.require(:default, :test)
 
-require_relative '../lib/Client'
+require_relative '../lib/leantesting'
 
 class HandlersTest < MiniTest::Test
 
@@ -46,9 +46,9 @@ class HandlersTest < MiniTest::Test
 	def test_HandlersCreateNonArrFields
 		@handlerCollection.each do |e|
 			if !e[1].nil? && e[1] == 'requiresIDInConstructor'
-				inst = e[0].new(Client.new, 999)
+				inst = e[0].new(LeanTesting::Client.new, 999)
 			else
-				inst = e[0].new(Client.new)
+				inst = e[0].new(LeanTesting::Client.new)
 			end
 			assert_raises SDKInvalidArgException do
 				inst.create('')
@@ -58,9 +58,9 @@ class HandlersTest < MiniTest::Test
 	def test_HandlersCreateEmptyFields
 		@handlerCollection.each do |e|
 			if !e[1].nil? && e[1] == 'requiresIDInConstructor'
-				inst = e[0].new(Client.new, 999)
+				inst = e[0].new(LeanTesting::Client.new, 999)
 			else
-				inst = e[0].new(Client.new)
+				inst = e[0].new(LeanTesting::Client.new)
 			end
 			assert_raises SDKInvalidArgException do
 				inst.create({})
@@ -75,9 +75,9 @@ class HandlersTest < MiniTest::Test
 	def test_HandlersAllNonArrFilters
 		@handlerCollection.each do |e|
 			if !e[1].nil? && e[1] == 'requiresIDInConstructor'
-				inst = e[0].new(Client.new, 999)
+				inst = e[0].new(LeanTesting::Client.new, 999)
 			else
-				inst = e[0].new(Client.new)
+				inst = e[0].new(LeanTesting::Client.new)
 			end
 			assert_raises SDKInvalidArgException do
 				inst.all('')
@@ -87,9 +87,9 @@ class HandlersTest < MiniTest::Test
 	def test_HandlersAllInvalidFilters
 		@handlerCollection.each do |e|
 			if !e[1].nil? && e[1] == 'requiresIDInConstructor'
-				inst = e[0].new(Client.new, 999)
+				inst = e[0].new(LeanTesting::Client.new, 999)
 			else
-				inst = e[0].new(Client.new)
+				inst = e[0].new(LeanTesting::Client.new)
 			end
 			assert_raises SDKInvalidArgException do
 				inst.all({'XXXfilterXXX'=> 9999})
@@ -97,7 +97,7 @@ class HandlersTest < MiniTest::Test
 		end
 	end
 	def test_HandlersAllSupportedFilters
-		client = Client.new
+		client = LeanTesting::Client.new
 		client.debugReturn = {
 			'data'=> '{"x": [], "meta": {"pagination": {}}}',
 			'status'=> 200
@@ -123,9 +123,9 @@ class HandlersTest < MiniTest::Test
 	def test_HandlersFindNonIntID
 		@handlerCollection.each do |e|
 			if !e[1].nil? && e[1] == 'requiresIDInConstructor'
-				inst = e[0].new(Client.new, 999)
+				inst = e[0].new(LeanTesting::Client.new, 999)
 			else
-				inst = e[0].new(Client.new)
+				inst = e[0].new(LeanTesting::Client.new)
 			end
 			assert_raises SDKInvalidArgException do
 				inst.find('')
@@ -139,9 +139,9 @@ class HandlersTest < MiniTest::Test
 	def test_HandlersDeleteNonIntID
 		@handlerCollection.each do |e|
 			if !e[1].nil? && e[1] == 'requiresIDInConstructor'
-				inst = e[0].new(Client.new, 999)
+				inst = e[0].new(LeanTesting::Client.new, 999)
 			else
-				inst = e[0].new(Client.new)
+				inst = e[0].new(LeanTesting::Client.new)
 			end
 			assert_raises SDKInvalidArgException do
 				inst.delete('')
@@ -156,9 +156,9 @@ class HandlersTest < MiniTest::Test
 	def test_HandlersUpdateNonIntID
 		@handlerCollection.each do |e|
 			if !e[1].nil? && e[1] == 'requiresIDInConstructor'
-				inst = e[0].new(Client.new, 999)
+				inst = e[0].new(LeanTesting::Client.new, 999)
 			else
-				inst = e[0].new(Client.new)
+				inst = e[0].new(LeanTesting::Client.new)
 			end
 			assert_raises SDKInvalidArgException do
 				inst.update('', {'x'=> 5})
@@ -168,9 +168,9 @@ class HandlersTest < MiniTest::Test
 	def test_HandlersUpdateNonArrFields
 		@handlerCollection.each do |e|
 			if !e[1].nil? && e[1] == 'requiresIDInConstructor'
-				inst = e[0].new(Client.new, 999)
+				inst = e[0].new(LeanTesting::Client.new, 999)
 			else
-				inst = e[0].new(Client.new)
+				inst = e[0].new(LeanTesting::Client.new)
 			end
 			assert_raises SDKInvalidArgException do
 				inst.update(5, '')
@@ -180,9 +180,9 @@ class HandlersTest < MiniTest::Test
 	def test_HandlersUpdateEmptyFields
 		@handlerCollection.each do |e|
 			if !e[1].nil? && e[1] == 'requiresIDInConstructor'
-				inst = e[0].new(Client.new, 999)
+				inst = e[0].new(LeanTesting::Client.new, 999)
 			else
-				inst = e[0].new(Client.new)
+				inst = e[0].new(LeanTesting::Client.new)
 			end
 			assert_raises SDKInvalidArgException do
 				inst.update(5, {})
@@ -196,19 +196,19 @@ class HandlersTest < MiniTest::Test
 
 	# HAVE SECONDARIES
 	def test_PlatformHandlerHasTypes
-		assert_instance_of PlatformTypesHandler, PlatformHandler.new(Client.new).types
+		assert_instance_of PlatformTypesHandler, PlatformHandler.new(LeanTesting::Client.new).types
 	end
 	def test_PlatformHandlerHasDevices
-		assert_instance_of PlatformDevicesHandler, PlatformHandler.new(Client.new).devices
+		assert_instance_of PlatformDevicesHandler, PlatformHandler.new(LeanTesting::Client.new).devices
 	end
 	def test_PlatformHandlerHasOS
-		assert_instance_of PlatformOSHandler, PlatformHandler.new(Client.new).os
+		assert_instance_of PlatformOSHandler, PlatformHandler.new(LeanTesting::Client.new).os
 	end
 	def test_PlatformHandlerHasBrowsers
-		assert_instance_of PlatformBrowsersHandler, PlatformHandler.new(Client.new).browsers
+		assert_instance_of PlatformBrowsersHandler, PlatformHandler.new(LeanTesting::Client.new).browsers
 	end
 	def test_UserHandlerHasOrganizations
-		assert_instance_of UserOrganizationsHandler, UserHandler.new(Client.new).organizations
+		assert_instance_of UserOrganizationsHandler, UserHandler.new(LeanTesting::Client.new).organizations
 	end
 	# END HAVE SECONDARIES
 

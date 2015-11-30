@@ -1,7 +1,7 @@
 require 'bundler'
 Bundler.require(:default, :test)
 
-require_relative '../lib/Client'
+require_relative '../lib/leantesting'
 
 class ExceptionsTest < MiniTest::Test
 

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
 	s.name        = 'leantesting'
-	s.version     = '1.0.0'
+	s.version     = '1.0.1'
 	s.date        = '2015-11-20'
 	s.platform    = Gem::Platform::RUBY
 	s.summary     = 'Lean Testing Ruby SDK'

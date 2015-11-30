@@ -1,51 +1,51 @@
 require 'bundler'
 Bundler.require(:default, :test)
 
-require_relative '../lib/Client'
+require_relative '../lib/leantesting'
 
 class BaseClassesTest < MiniTest::Test
 
 	def test_ClientDefined
-		Client.new
+		LeanTesting::Client.new
 	end
 
 
 
 
 	def test_ClientHasAuthObj
-		assert_instance_of OAuth2Handler, Client.new.auth
+		assert_instance_of OAuth2Handler, LeanTesting::Client.new.auth
 	end
 	def test_ClientHasUserObj
-		assert_instance_of UserHandler, Client.new.user
+		assert_instance_of UserHandler, LeanTesting::Client.new.user
 	end
 	def test_ClientHasProjectsObj
-		assert_instance_of ProjectsHandler, Client.new.projects
+		assert_instance_of ProjectsHandler, LeanTesting::Client.new.projects
 	end
 	def test_ClientHasBugsObj
-		assert_instance_of BugsHandler, Client.new.bugs
+		assert_instance_of BugsHandler, LeanTesting::Client.new.bugs
 	end
 	def test_ClientHasAttachmentsObj
-		assert_instance_of AttachmentsHandler, Client.new.attachments
+		assert_instance_of AttachmentsHandler, LeanTesting::Client.new.attachments
 	end
 	def test_ClientHasPlatformObj
-		assert_instance_of PlatformHandler, Client.new.platform
+		assert_instance_of PlatformHandler, LeanTesting::Client.new.platform
 	end
 
 
 
 	def test_InitialEmptyToken
-		assert !Client.new.getCurrentToken
+		assert !LeanTesting::Client.new.getCurrentToken
 	end
 	def test_TokenParseStorage
 		tokenName = '__token__test__'
-		client = Client.new
+		client = LeanTesting::Client.new
 		client.attachToken(tokenName)
 
 		assert_equal client.getCurrentToken, tokenName
 	end
 	def test_TokenParseNonStr
 		assert_raises SDKInvalidArgException do
-			Client.new.attachToken(7182381)
+			LeanTesting::Client.new.attachToken(7182381)
 		end
 	end
 
