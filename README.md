@@ -1,5 +1,7 @@
 # Lean Testing Ruby SDK
 
+[![Gem Version](https://badge.fury.io/rb/leantesting.svg)](https://badge.fury.io/rb/leantesting)
+
 **Ruby client for [Lean Testing API](https://leantesting.com/en/api-docs)**
 
 You can sign up for a Lean Testing account at [https://leantesting.com](https://leantesting.com).
