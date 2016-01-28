@@ -1,20 +1,22 @@
-class BugCommentsHandler < EntityHandler
+module LeanTesting
+	class BugCommentsHandler < LeanTesting::EntityHandler
 
-	def initialize(origin, bugID)
-		super(origin)
+		def initialize(origin, bugID)
+			super(origin)
 
-		@bugID = bugID
-	end
-
-	def all(filters = nil)
-		if !filters
-			filters = {}
+			@bugID = bugID
 		end
 
-		super
+		def all(filters = nil)
+			if !filters
+				filters = {}
+			end
 
-		request = APIRequest.new(@origin, '/v1/bugs/' + @bugID.to_s() + '/comments', 'GET')
-		EntityList.new(@origin, request, BugComment, filters)
+			super
+
+			request = APIRequest.new(@origin, '/v1/bugs/' + @bugID.to_s() + '/comments', 'GET')
+			EntityList.new(@origin, request, BugComment, filters)
+		end
+
 	end
-
 end

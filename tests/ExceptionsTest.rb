@@ -7,15 +7,15 @@ class ExceptionsTest < MiniTest::Test
 
 	def setup
 		@exceptionCollection = [
-			[SDKException],
-			[SDKBadJSONResponseException],
-			[SDKDuplicateRequestException],
-			[SDKErrorResponseException],
-			[SDKIncompleteRequestException],
-			[SDKInvalidArgException],
-			[SDKMissingArgException],
-			[SDKUnexpectedResponseException],
-			[SDKUnsupportedRequestException]
+			[LeanTesting::SDKException],
+			[LeanTesting::SDKBadJSONResponseException],
+			[LeanTesting::SDKDuplicateRequestException],
+			[LeanTesting::SDKErrorResponseException],
+			[LeanTesting::SDKIncompleteRequestException],
+			[LeanTesting::SDKInvalidArgException],
+			[LeanTesting::SDKMissingArgException],
+			[LeanTesting::SDKUnexpectedResponseException],
+			[LeanTesting::SDKUnsupportedRequestException]
 		]
 	end
 
@@ -48,20 +48,20 @@ class ExceptionsTest < MiniTest::Test
 
 	# RAISE WITH ARR (when supported)
 	def test_DuplicateRequestRaiseWithArr
-		ex = assert_raises SDKDuplicateRequestException do
-			raise SDKDuplicateRequestException, ['xx', 'yy', 'zz']
+		ex = assert_raises LeanTesting::SDKDuplicateRequestException do
+			raise LeanTesting::SDKDuplicateRequestException, ['xx', 'yy', 'zz']
 		end
 		assert_match 'Duplicate', ex.message
 	end
 	def test_IncompleteRequestRaiseWithArr
-		ex = assert_raises SDKIncompleteRequestException do
-			raise SDKIncompleteRequestException, ['xx', 'yy', 'zz']
+		ex = assert_raises LeanTesting::SDKIncompleteRequestException do
+			raise LeanTesting::SDKIncompleteRequestException, ['xx', 'yy', 'zz']
 		end
 		assert_match 'Incomplete', ex.message
 	end
 	def test_UnsupportedRequestRaiseWithArr
-		ex = assert_raises SDKUnsupportedRequestException do
-			raise SDKUnsupportedRequestException, ['xx', 'yy', 'zz']
+		ex = assert_raises LeanTesting::SDKUnsupportedRequestException do
+			raise LeanTesting::SDKUnsupportedRequestException, ['xx', 'yy', 'zz']
 		end
 		assert_match 'Unsupported', ex.message
 	end

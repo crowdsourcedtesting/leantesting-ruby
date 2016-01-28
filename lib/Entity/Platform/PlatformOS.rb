@@ -1,10 +1,12 @@
-class PlatformOS < Entity
-	attr_reader :versions
+module LeanTesting
+  class PlatformOS < LeanTesting::Entity
+  	attr_reader :versions
 
-	def initialize(origin, data)
-		super
+  	def initialize(origin, data)
+  		super
 
-		@versions = PlatformOSVersionsHandler.new(origin, data['id'])
-	end
+  		@versions = PlatformOSVersionsHandler.new(origin, data['id'])
+  	end
 
+  end
 end

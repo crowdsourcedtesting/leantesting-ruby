@@ -1,20 +1,22 @@
-class PlatformBrowserVersionsHandler < EntityHandler
+module LeanTesting
+	class PlatformBrowserVersionsHandler < LeanTesting::EntityHandler
 
-	def initialize(origin, browserID)
-		super(origin)
+		def initialize(origin, browserID)
+			super(origin)
 
-		@browserID = browserID
-	end
-
-	def all(filters = nil)
-		if !filters
-			filters = {}
+			@browserID = browserID
 		end
 
-		super
+		def all(filters = nil)
+			if !filters
+				filters = {}
+			end
 
-		request = APIRequest.new(@origin, '/v1/platform/browsers/' + @browserID.to_s() + '/versions', 'GET')
-		EntityList.new(@origin, request, PlatformBrowserVersion, filters)
+			super
+
+			request = APIRequest.new(@origin, '/v1/platform/browsers/' + @browserID.to_s() + '/versions', 'GET')
+			EntityList.new(@origin, request, PlatformBrowserVersion, filters)
+		end
+
 	end
-
 end

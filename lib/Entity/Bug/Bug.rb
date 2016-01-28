@@ -1,11 +1,13 @@
-class Bug < Entity
-	attr_reader :comments, :attachments
+module LeanTesting
+  class Bug < LeanTesting::Entity
+  	attr_reader :comments, :attachments
 
-	def initialize(origin, data)
-		super
+  	def initialize(origin, data)
+  		super
 
-		@comments		= BugCommentsHandler.new(origin, data['id'])
-		@attachments	= BugAttachmentsHandler.new(origin, data['id'])
-	end
+  		@comments		= BugCommentsHandler.new(origin, data['id'])
+  		@attachments	= BugAttachmentsHandler.new(origin, data['id'])
+  	end
 
+  end
 end
