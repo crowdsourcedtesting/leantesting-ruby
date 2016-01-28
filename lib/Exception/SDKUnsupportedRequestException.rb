@@ -1,19 +1,21 @@
-class SDKUnsupportedRequestException < SDKException
+module LeanTesting
+	class SDKUnsupportedRequestException < SDKException
 
-	def initialize(message = nil)
-		@baseMessage = 'Unsupported request data'
+		def initialize(message = nil)
+			@baseMessage = 'Unsupported request data'
 
-		if message.is_a? Array
-			message = message.map{ |el| '`' + el + '`' }.join(', ')
+			if message.is_a? Array
+				message = message.map{ |el| '`' + el + '`' }.join(', ')
+			end
+
+			if !message
+				message = @baseMessage
+			else
+				message = @baseMessage + ' - invalid ' + message
+			end
+
+			super
 		end
 
-		if !message
-			message = @baseMessage
-		else
-			message = @baseMessage + ' - invalid ' + message
-		end
-
-		super
 	end
-
 end

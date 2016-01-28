@@ -7,29 +7,29 @@ class HandlersTest < MiniTest::Test
 
 	def setup
 		@handlerCollection = [
-			[AttachmentsHandler],
-			[BugAttachmentsHandler,						'requiresIDInConstructor'],
-			[BugCommentsHandler,						'requiresIDInConstructor'],
-			[BugsHandler],
-			[PlatformBrowsersHandler],
-			[PlatformBrowserVersionsHandler,			'requiresIDInConstructor'],
-			[PlatformDevicesHandler],
-			[PlatformHandler],
-			[PlatformOSHandler],
-			[PlatformOSVersionsHandler,					'requiresIDInConstructor'],
-			[PlatformTypeDevicesHandler,				'requiresIDInConstructor'],
-			[PlatformTypesHandler],
-			[ProjectBugReproducibilitySchemeHandler,	'requiresIDInConstructor'],
-			[ProjectBugSeveritySchemeHandler,			'requiresIDInConstructor'],
-			[ProjectBugsHandler,						'requiresIDInConstructor'],
-			[ProjectBugStatusSchemeHandler,				'requiresIDInConstructor'],
-			[ProjectBugTypeSchemeHandler,				'requiresIDInConstructor'],
-			[ProjectSectionsHandler,					'requiresIDInConstructor'],
-			[ProjectsHandler],
-			[ProjectUsersHandler,						'requiresIDInConstructor'],
-			[ProjectVersionsHandler,					'requiresIDInConstructor'],
-			[UserHandler],
-			[UserOrganizationsHandler]
+			[LeanTesting::AttachmentsHandler],
+			[LeanTesting::BugAttachmentsHandler,						'requiresIDInConstructor'],
+			[LeanTesting::BugCommentsHandler,						'requiresIDInConstructor'],
+			[LeanTesting::BugsHandler],
+			[LeanTesting::PlatformBrowsersHandler],
+			[LeanTesting::PlatformBrowserVersionsHandler,			'requiresIDInConstructor'],
+			[LeanTesting::PlatformDevicesHandler],
+			[LeanTesting::PlatformHandler],
+			[LeanTesting::PlatformOSHandler],
+			[LeanTesting::PlatformOSVersionsHandler,					'requiresIDInConstructor'],
+			[LeanTesting::PlatformTypeDevicesHandler,				'requiresIDInConstructor'],
+			[LeanTesting::PlatformTypesHandler],
+			[LeanTesting::ProjectBugReproducibilitySchemeHandler,	'requiresIDInConstructor'],
+			[LeanTesting::ProjectBugSeveritySchemeHandler,			'requiresIDInConstructor'],
+			[LeanTesting::ProjectBugsHandler,						'requiresIDInConstructor'],
+			[LeanTesting::ProjectBugStatusSchemeHandler,				'requiresIDInConstructor'],
+			[LeanTesting::ProjectBugTypeSchemeHandler,				'requiresIDInConstructor'],
+			[LeanTesting::ProjectSectionsHandler,					'requiresIDInConstructor'],
+			[LeanTesting::ProjectsHandler],
+			[LeanTesting::ProjectUsersHandler,						'requiresIDInConstructor'],
+			[LeanTesting::ProjectVersionsHandler,					'requiresIDInConstructor'],
+			[LeanTesting::UserHandler],
+			[LeanTesting::UserOrganizationsHandler]
 		]
 	end
 
@@ -50,7 +50,7 @@ class HandlersTest < MiniTest::Test
 			else
 				inst = e[0].new(LeanTesting::Client.new)
 			end
-			assert_raises SDKInvalidArgException do
+			assert_raises LeanTesting::SDKInvalidArgException do
 				inst.create('')
 			end
 		end
@@ -62,7 +62,7 @@ class HandlersTest < MiniTest::Test
 			else
 				inst = e[0].new(LeanTesting::Client.new)
 			end
-			assert_raises SDKInvalidArgException do
+			assert_raises LeanTesting::SDKInvalidArgException do
 				inst.create({})
 			end
 		end
@@ -79,7 +79,7 @@ class HandlersTest < MiniTest::Test
 			else
 				inst = e[0].new(LeanTesting::Client.new)
 			end
-			assert_raises SDKInvalidArgException do
+			assert_raises LeanTesting::SDKInvalidArgException do
 				inst.all('')
 			end
 		end
@@ -91,7 +91,7 @@ class HandlersTest < MiniTest::Test
 			else
 				inst = e[0].new(LeanTesting::Client.new)
 			end
-			assert_raises SDKInvalidArgException do
+			assert_raises LeanTesting::SDKInvalidArgException do
 				inst.all({'XXXfilterXXX'=> 9999})
 			end
 		end
@@ -127,7 +127,7 @@ class HandlersTest < MiniTest::Test
 			else
 				inst = e[0].new(LeanTesting::Client.new)
 			end
-			assert_raises SDKInvalidArgException do
+			assert_raises LeanTesting::SDKInvalidArgException do
 				inst.find('')
 			end
 		end
@@ -143,7 +143,7 @@ class HandlersTest < MiniTest::Test
 			else
 				inst = e[0].new(LeanTesting::Client.new)
 			end
-			assert_raises SDKInvalidArgException do
+			assert_raises LeanTesting::SDKInvalidArgException do
 				inst.delete('')
 			end
 		end
@@ -160,7 +160,7 @@ class HandlersTest < MiniTest::Test
 			else
 				inst = e[0].new(LeanTesting::Client.new)
 			end
-			assert_raises SDKInvalidArgException do
+			assert_raises LeanTesting::SDKInvalidArgException do
 				inst.update('', {'x'=> 5})
 			end
 		end
@@ -172,7 +172,7 @@ class HandlersTest < MiniTest::Test
 			else
 				inst = e[0].new(LeanTesting::Client.new)
 			end
-			assert_raises SDKInvalidArgException do
+			assert_raises LeanTesting::SDKInvalidArgException do
 				inst.update(5, '')
 			end
 		end
@@ -184,7 +184,7 @@ class HandlersTest < MiniTest::Test
 			else
 				inst = e[0].new(LeanTesting::Client.new)
 			end
-			assert_raises SDKInvalidArgException do
+			assert_raises LeanTesting::SDKInvalidArgException do
 				inst.update(5, {})
 			end
 		end
@@ -196,19 +196,19 @@ class HandlersTest < MiniTest::Test
 
 	# HAVE SECONDARIES
 	def test_PlatformHandlerHasTypes
-		assert_instance_of PlatformTypesHandler, PlatformHandler.new(LeanTesting::Client.new).types
+		assert_instance_of LeanTesting::PlatformTypesHandler, LeanTesting::PlatformHandler.new(LeanTesting::Client.new).types
 	end
 	def test_PlatformHandlerHasDevices
-		assert_instance_of PlatformDevicesHandler, PlatformHandler.new(LeanTesting::Client.new).devices
+		assert_instance_of LeanTesting::PlatformDevicesHandler, LeanTesting::PlatformHandler.new(LeanTesting::Client.new).devices
 	end
 	def test_PlatformHandlerHasOS
-		assert_instance_of PlatformOSHandler, PlatformHandler.new(LeanTesting::Client.new).os
+		assert_instance_of LeanTesting::PlatformOSHandler, LeanTesting::PlatformHandler.new(LeanTesting::Client.new).os
 	end
 	def test_PlatformHandlerHasBrowsers
-		assert_instance_of PlatformBrowsersHandler, PlatformHandler.new(LeanTesting::Client.new).browsers
+		assert_instance_of LeanTesting::PlatformBrowsersHandler, LeanTesting::PlatformHandler.new(LeanTesting::Client.new).browsers
 	end
 	def test_UserHandlerHasOrganizations
-		assert_instance_of UserOrganizationsHandler, UserHandler.new(LeanTesting::Client.new).organizations
+		assert_instance_of LeanTesting::UserOrganizationsHandler, LeanTesting::UserHandler.new(LeanTesting::Client.new).organizations
 	end
 	# END HAVE SECONDARIES
 

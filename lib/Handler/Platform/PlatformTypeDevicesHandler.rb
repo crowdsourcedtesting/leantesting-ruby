@@ -1,20 +1,22 @@
-class PlatformTypeDevicesHandler < EntityHandler
+module LeanTesting
+	class PlatformTypeDevicesHandler < LeanTesting::EntityHandler
 
-	def initialize(origin, typeID)
-		super(origin)
+		def initialize(origin, typeID)
+			super(origin)
 
-		@typeID = typeID
-	end
-
-	def all(filters = nil)
-		if !filters
-			filters = {}
+			@typeID = typeID
 		end
 
-		super
+		def all(filters = nil)
+			if !filters
+				filters = {}
+			end
 
-		request = APIRequest.new(@origin, '/v1/platform/types/' + @typeID.to_s() + '/devices', 'GET')
-		EntityList.new(@origin, request, PlatformDevice, filters)
+			super
+
+			request = APIRequest.new(@origin, '/v1/platform/types/' + @typeID.to_s() + '/devices', 'GET')
+			EntityList.new(@origin, request, PlatformDevice, filters)
+		end
+
 	end
-
 end

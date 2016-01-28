@@ -13,22 +13,22 @@ class BaseClassesTest < MiniTest::Test
 
 
 	def test_ClientHasAuthObj
-		assert_instance_of OAuth2Handler, LeanTesting::Client.new.auth
+		assert_instance_of LeanTesting::OAuth2Handler, LeanTesting::Client.new.auth
 	end
 	def test_ClientHasUserObj
-		assert_instance_of UserHandler, LeanTesting::Client.new.user
+		assert_instance_of LeanTesting::UserHandler, LeanTesting::Client.new.user
 	end
 	def test_ClientHasProjectsObj
-		assert_instance_of ProjectsHandler, LeanTesting::Client.new.projects
+		assert_instance_of LeanTesting::ProjectsHandler, LeanTesting::Client.new.projects
 	end
 	def test_ClientHasBugsObj
-		assert_instance_of BugsHandler, LeanTesting::Client.new.bugs
+		assert_instance_of LeanTesting::BugsHandler, LeanTesting::Client.new.bugs
 	end
 	def test_ClientHasAttachmentsObj
-		assert_instance_of AttachmentsHandler, LeanTesting::Client.new.attachments
+		assert_instance_of LeanTesting::AttachmentsHandler, LeanTesting::Client.new.attachments
 	end
 	def test_ClientHasPlatformObj
-		assert_instance_of PlatformHandler, LeanTesting::Client.new.platform
+		assert_instance_of LeanTesting::PlatformHandler, LeanTesting::Client.new.platform
 	end
 
 
@@ -44,7 +44,7 @@ class BaseClassesTest < MiniTest::Test
 		assert_equal client.getCurrentToken, tokenName
 	end
 	def test_TokenParseNonStr
-		assert_raises SDKInvalidArgException do
+		assert_raises LeanTesting::SDKInvalidArgException do
 			LeanTesting::Client.new.attachToken(7182381)
 		end
 	end

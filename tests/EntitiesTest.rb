@@ -7,41 +7,41 @@ class EntitiesTest < MiniTest::Test
 
 	def setup
 		@entityColllection = [
-			[Bug, {
-				'comments'      => BugCommentsHandler,
-				'attachments'   => BugAttachmentsHandler
+			[LeanTesting::Bug, {
+				'comments'      => LeanTesting::BugCommentsHandler,
+				'attachments'   => LeanTesting::BugAttachmentsHandler
 			}],
-			[BugAttachment],
-			[BugComment],
-			[PlatformBrowser, {
-				'versions'      => PlatformBrowserVersionsHandler
+			[LeanTesting::BugAttachment],
+			[LeanTesting::BugComment],
+			[LeanTesting::PlatformBrowser, {
+				'versions'      => LeanTesting::PlatformBrowserVersionsHandler
 			}],
-			[PlatformBrowserVersion],
-			[PlatformDevice],
-			[PlatformOS, {
-				'versions'      => PlatformOSVersionsHandler
+			[LeanTesting::PlatformBrowserVersion],
+			[LeanTesting::PlatformDevice],
+			[LeanTesting::PlatformOS, {
+				'versions'      => LeanTesting::PlatformOSVersionsHandler
 			}],
-			[PlatformOSVersion],
-			[PlatformType, {
-				'devices'       => PlatformTypeDevicesHandler
+			[LeanTesting::PlatformOSVersion],
+			[LeanTesting::PlatformType, {
+				'devices'       => LeanTesting::PlatformTypeDevicesHandler
 			}],
-			[Project, {
-				'sections'      => ProjectSectionsHandler,
-				'versions'      => ProjectVersionsHandler,
-				'users'         => ProjectUsersHandler,
+			[LeanTesting::Project, {
+				'sections'      => LeanTesting::ProjectSectionsHandler,
+				'versions'      => LeanTesting::ProjectVersionsHandler,
+				'users'         => LeanTesting::ProjectUsersHandler,
 
-				'bugTypeScheme'             => ProjectBugTypeSchemeHandler,
-				'bugStatusScheme'           => ProjectBugStatusSchemeHandler,
-				'bugSeverityScheme'         => ProjectBugSeveritySchemeHandler,
-				'bugReproducibilityScheme'  => ProjectBugReproducibilitySchemeHandler,
+				'bugTypeScheme'             => LeanTesting::ProjectBugTypeSchemeHandler,
+				'bugStatusScheme'           => LeanTesting::ProjectBugStatusSchemeHandler,
+				'bugSeverityScheme'         => LeanTesting::ProjectBugSeveritySchemeHandler,
+				'bugReproducibilityScheme'  => LeanTesting::ProjectBugReproducibilitySchemeHandler,
 
-				'bugs'          => ProjectBugsHandler
+				'bugs'          => LeanTesting::ProjectBugsHandler
 			}],
-			[ProjectBugScheme],
-			[ProjectSection],
-			[ProjectUser],
-			[ProjectVersion],
-			[UserOrganization]
+			[LeanTesting::ProjectBugScheme],
+			[LeanTesting::ProjectSection],
+			[LeanTesting::ProjectUser],
+			[LeanTesting::ProjectVersion],
+			[LeanTesting::UserOrganization]
 		]
 	end
 
@@ -52,7 +52,7 @@ class EntitiesTest < MiniTest::Test
 	end
 
 	def test_EntitiesCorrectParent
-		@entityColllection.each { |e| assert_kind_of Entity, e[0].new(LeanTesting::Client.new, {'id'=> 1}) }
+		@entityColllection.each { |e| assert_kind_of LeanTesting::Entity, e[0].new(LeanTesting::Client.new, {'id'=> 1}) }
 	end
 
 	def test_EntitiesDataParsing
@@ -67,14 +67,14 @@ class EntitiesTest < MiniTest::Test
 
 	def test_EntitiesInstanceNonArrData
 		@entityColllection.each do |e|
-			assert_raises SDKInvalidArgException do
+			assert_raises LeanTesting::SDKInvalidArgException do
 				e[0].new(LeanTesting::Client.new, '')
 			end
 		end
 	end
 	def test_EntitiesInstanceEmptyData
 		@entityColllection.each do |e|
-			assert_raises SDKInvalidArgException do
+			assert_raises LeanTesting::SDKInvalidArgException do
 				e[0].new(LeanTesting::Client.new, {})
 			end
 		end

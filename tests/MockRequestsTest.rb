@@ -77,7 +77,7 @@ class MockRequestsTest < MiniTest::Test
 	end
 	def test_GetUserOrganizations
 		colName = 'organizations'
-		retClass = UserOrganization
+		retClass = LeanTesting::UserOrganization
 		resp = rcol(colName, ['_id', 'name', 'alias', 'url', 'logo'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
@@ -99,7 +99,7 @@ class MockRequestsTest < MiniTest::Test
 	# PROJECT
 	def test_ListAllProjects
 		colName = 'projects'
-		retClass = Project
+		retClass = LeanTesting::Project
 		resp = rcol(colName, ['_id', 'name', '_owner_id', '_organization_id', '_is_archived', 'created_at'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
@@ -112,7 +112,7 @@ class MockRequestsTest < MiniTest::Test
 		assert_equal resp['meta']['pagination']['count'], col.count
 	end
 	def test_CreateNewProject
-		retClass = Project
+		retClass = LeanTesting::Project
 		resp = robj(['_id', 'name', '_owner_id', '_organization_id', '_is_archived', 'created_at'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
@@ -124,7 +124,7 @@ class MockRequestsTest < MiniTest::Test
 		assert_instance_of retClass, obj
 	end
 	def test_RetrieveExistingProject
-		retClass = Project
+		retClass = LeanTesting::Project
 		resp = robj(['_id', 'name', '_owner_id', '_organization_id', '_is_archived', 'created_at'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
@@ -137,11 +137,11 @@ class MockRequestsTest < MiniTest::Test
 
 	def test_ListProjectSections
 		colName = 'sections'
-		retClass = ProjectSection
+		retClass = LeanTesting::ProjectSection
 		resp = rcol(colName, ['_id', 'name', '_project_id'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		col = Project.new(@client, {'id'=> 0}).sections.all
+		col = LeanTesting::Project.new(@client, {'id'=> 0}).sections.all
 
 		assert_equal resp[colName], col.toArray
 		assert_instance_of retClass, col.collection[0]
@@ -150,11 +150,11 @@ class MockRequestsTest < MiniTest::Test
 		assert_equal resp['meta']['pagination']['count'], col.count
 	end
 	def test_AddProjectSection
-		retClass = ProjectSection
+		retClass = LeanTesting::ProjectSection
 		resp = robj(['_id', 'name', '_project_id'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		obj = Project.new(@client, {'id'=> 0}).sections.create({
+		obj = LeanTesting::Project.new(@client, {'id'=> 0}).sections.create({
 			'name'=> ''
 		})
 
@@ -165,11 +165,11 @@ class MockRequestsTest < MiniTest::Test
 
 	def test_ListProjectVersions
 		colName = 'versions'
-		retClass = ProjectVersion
+		retClass = LeanTesting::ProjectVersion
 		resp = rcol(colName, ['_id', 'number', '_project_id'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		col = Project.new(@client, {'id'=> 0}).versions.all
+		col = LeanTesting::Project.new(@client, {'id'=> 0}).versions.all
 
 		assert_equal resp[colName], col.toArray
 		assert_instance_of retClass, col.collection[0]
@@ -178,11 +178,11 @@ class MockRequestsTest < MiniTest::Test
 		assert_equal resp['meta']['pagination']['count'], col.count
 	end
 	def test_AddProjectVersion
-		retClass = ProjectVersion
+		retClass = LeanTesting::ProjectVersion
 		resp = robj(['_id', 'number', '_project_id'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		obj = Project.new(@client, {'id'=> 0}).versions.create({
+		obj = LeanTesting::Project.new(@client, {'id'=> 0}).versions.create({
 			'number'=> ''
 		})
 
@@ -193,11 +193,11 @@ class MockRequestsTest < MiniTest::Test
 
 	def test_ListProjectUsers
 		colName = 'users'
-		retClass = ProjectUser
+		retClass = LeanTesting::ProjectUser
 		resp = rcol(colName, ['_id', 'username', 'first_name', 'last_name', 'avatar', 'email', 'created_at'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		col = Project.new(@client, {'id'=> 0}).users.all
+		col = LeanTesting::Project.new(@client, {'id'=> 0}).users.all
 
 		assert_equal resp[colName], col.toArray
 		assert_instance_of retClass, col.collection[0]
@@ -209,11 +209,11 @@ class MockRequestsTest < MiniTest::Test
 
 	def test_ListProjectBugTypeScheme
 		colName = 'scheme'
-		retClass = ProjectBugScheme
+		retClass = LeanTesting::ProjectBugScheme
 		resp = rcol(colName, ['_id', 'name'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		col = Project.new(@client, {'id'=> 0}).bugTypeScheme.all
+		col = LeanTesting::Project.new(@client, {'id'=> 0}).bugTypeScheme.all
 
 		assert_equal resp[colName], col.toArray
 		assert_instance_of retClass, col.collection[0]
@@ -223,11 +223,11 @@ class MockRequestsTest < MiniTest::Test
 	end
 	def test_ListProjectBugStatusScheme
 		colName = 'scheme'
-		retClass = ProjectBugScheme
+		retClass = LeanTesting::ProjectBugScheme
 		resp = rcol(colName, ['_id', 'name'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		col = Project.new(@client, {'id'=> 0}).bugStatusScheme.all
+		col = LeanTesting::Project.new(@client, {'id'=> 0}).bugStatusScheme.all
 
 		assert_equal resp[colName], col.toArray
 		assert_instance_of retClass, col.collection[0]
@@ -237,11 +237,11 @@ class MockRequestsTest < MiniTest::Test
 	end
 	def test_ListProjectBugSeverityScheme
 		colName = 'scheme'
-		retClass = ProjectBugScheme
+		retClass = LeanTesting::ProjectBugScheme
 		resp = rcol(colName, ['_id', 'name'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		col = Project.new(@client, {'id'=> 0}).bugSeverityScheme.all
+		col = LeanTesting::Project.new(@client, {'id'=> 0}).bugSeverityScheme.all
 
 		assert_equal resp[colName], col.toArray
 		assert_instance_of retClass, col.collection[0]
@@ -251,11 +251,11 @@ class MockRequestsTest < MiniTest::Test
 	end
 	def test_ListProjectBugReproducibilityScheme
 		colName = 'scheme'
-		retClass = ProjectBugScheme
+		retClass = LeanTesting::ProjectBugScheme
 		resp = rcol(colName, ['_id', 'name'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		col = Project.new(@client, {'id'=> 0}).bugReproducibilityScheme.all
+		col = LeanTesting::Project.new(@client, {'id'=> 0}).bugReproducibilityScheme.all
 
 		assert_equal resp[colName], col.toArray
 		assert_instance_of retClass, col.collection[0]
@@ -275,13 +275,13 @@ class MockRequestsTest < MiniTest::Test
 	# BUG
 	def test_ListBugsInProject
 		colName = 'bugs'
-		retClass = Bug
+		retClass = LeanTesting::Bug
 		resp = rcol(colName, ['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
 			'_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
 			'expected_results'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		col = Project.new(@client, {'id'=> 0}).bugs.all
+		col = LeanTesting::Project.new(@client, {'id'=> 0}).bugs.all
 
 		assert_equal resp[colName], col.toArray
 		assert_instance_of retClass, col.collection[0]
@@ -290,13 +290,13 @@ class MockRequestsTest < MiniTest::Test
 		assert_equal resp['meta']['pagination']['count'], col.count
 	end
 	def test_CreateNewBug
-		retClass = Bug
+		retClass = LeanTesting::Bug
 		resp = robj(['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
 			'_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
 			'expected_results'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		obj = Project.new(@client, {'id'=> 0}).bugs.create({
+		obj = LeanTesting::Project.new(@client, {'id'=> 0}).bugs.create({
 			'title'=> '', 'status_id'=> 0, 'severity_id'=> 0, 'project_version_id'=> 0, 'project_section_id'=> 0,
 			'type_id'=> 0, 'reproducibility_id'=> 0, 'assigned_user_id'=> 0, 'description'=> '',
 			'expected_results'=> ''
@@ -306,7 +306,7 @@ class MockRequestsTest < MiniTest::Test
 		assert_instance_of retClass, obj
 	end
 	def test_RetrieveExistingBug
-		retClass = Bug
+		retClass = LeanTesting::Bug
 		resp = robj(['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
 			'_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
 			'expected_results'])
@@ -318,7 +318,7 @@ class MockRequestsTest < MiniTest::Test
 		assert_instance_of retClass, obj
 	end
 	def test_UpdateBug
-		retClass = Bug
+		retClass = LeanTesting::Bug
 		resp = robj(['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
 			'_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
 			'expected_results'])
@@ -350,11 +350,11 @@ class MockRequestsTest < MiniTest::Test
 	# BUG COMMENTS
 	def test_ListBugComments
 		colName = 'comments'
-		retClass = BugComment
+		retClass = LeanTesting::BugComment
 		resp = rcol(colName, ['_id', 'text', '_owner_id', 'created_at'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		col = Bug.new(@client, {'id'=> 0}).comments.all
+		col = LeanTesting::Bug.new(@client, {'id'=> 0}).comments.all
 
 		assert_equal resp[colName], col.toArray
 		assert_instance_of retClass, col.collection[0]
@@ -374,11 +374,11 @@ class MockRequestsTest < MiniTest::Test
 	# BUG ATTACHMENTS
 	def test_ListBugAttachments
 		colName = 'attachments'
-		retClass = BugAttachment
+		retClass = LeanTesting::BugAttachment
 		resp = rcol(colName, ['_id', '_owner_id', 'url', 'created_at'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		col = Bug.new(@client, {'id'=> 0}).attachments.all
+		col = LeanTesting::Bug.new(@client, {'id'=> 0}).attachments.all
 
 		assert_equal resp[colName], col.toArray
 		assert_instance_of retClass, col.collection[0]
@@ -387,18 +387,18 @@ class MockRequestsTest < MiniTest::Test
 		assert_equal resp['meta']['pagination']['count'], col.count
 	end
 	def test_CreateNewAttachment
-		retClass = BugAttachment
+		retClass = LeanTesting::BugAttachment
 		resp = robj(['_id', '_owner_id', 'url', 'created_at'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
 		_fp = File.expand_path(File.dirname(__FILE__)) + '/res/upload_sample.jpg'
-		obj = Bug.new(@client, {'id'=> 0}).attachments.upload(_fp)
+		obj = LeanTesting::Bug.new(@client, {'id'=> 0}).attachments.upload(_fp)
 
 		assert_equal resp, obj.data
 		assert_instance_of retClass, obj
 	end
 	def test_RetrieveExistingAttachment
-		retClass = BugAttachment
+		retClass = LeanTesting::BugAttachment
 		resp = robj(['_id', '_owner_id', 'url', 'created_at'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
@@ -426,7 +426,7 @@ class MockRequestsTest < MiniTest::Test
 	# PLATFORM
 	def test_ListPlatformTypes
 		colName = 'types'
-		retClass = PlatformType
+		retClass = LeanTesting::PlatformType
 		resp = rcol(colName, ['_id', 'name'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
@@ -439,7 +439,7 @@ class MockRequestsTest < MiniTest::Test
 		assert_equal resp['meta']['pagination']['count'], col.count
 	end
 	def test_RetrievePlatformType
-		retClass = PlatformType
+		retClass = LeanTesting::PlatformType
 		resp = robj(['_id', 'name'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
@@ -451,11 +451,11 @@ class MockRequestsTest < MiniTest::Test
 
 	def test_ListPlatformDevices
 		colName = 'devices'
-		retClass = PlatformDevice
+		retClass = LeanTesting::PlatformDevice
 		resp = rcol(colName, ['_id', 'name'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		col = PlatformType.new(@client, {'id'=> 0}).devices.all
+		col = LeanTesting::PlatformType.new(@client, {'id'=> 0}).devices.all
 
 		assert_equal resp[colName], col.toArray
 		assert_instance_of retClass, col.collection[0]
@@ -464,7 +464,7 @@ class MockRequestsTest < MiniTest::Test
 		assert_equal resp['meta']['pagination']['count'], col.count
 	end
 	def test_RetrievePlatformDevice
-		retClass = PlatformDevice
+		retClass = LeanTesting::PlatformDevice
 		resp = robj(['_id', 'name'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
@@ -476,7 +476,7 @@ class MockRequestsTest < MiniTest::Test
 
 	def test_ListOS
 		colName = 'os'
-		retClass = PlatformOS
+		retClass = LeanTesting::PlatformOS
 		resp = rcol(colName, ['_id', 'name'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
@@ -489,7 +489,7 @@ class MockRequestsTest < MiniTest::Test
 		assert_equal resp['meta']['pagination']['count'], col.count
 	end
 	def test_RetrieveOS
-		retClass = PlatformOS
+		retClass = LeanTesting::PlatformOS
 		resp = robj(['_id', 'name'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
@@ -500,11 +500,11 @@ class MockRequestsTest < MiniTest::Test
 	end
 	def test_ListOSVersions
 		colName = 'versions'
-		retClass = PlatformOSVersion
+		retClass = LeanTesting::PlatformOSVersion
 		resp = rcol(colName, ['_id', 'number'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		col = PlatformOS.new(@client, {'id'=> 0}).versions.all
+		col = LeanTesting::PlatformOS.new(@client, {'id'=> 0}).versions.all
 
 		assert_equal resp[colName], col.toArray
 		assert_instance_of retClass, col.collection[0]
@@ -515,7 +515,7 @@ class MockRequestsTest < MiniTest::Test
 
 	def test_ListBrowsers
 		colName = 'browsers'
-		retClass = PlatformBrowser
+		retClass = LeanTesting::PlatformBrowser
 		resp = rcol(colName, ['_id', 'name'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
@@ -528,7 +528,7 @@ class MockRequestsTest < MiniTest::Test
 		assert_equal resp['meta']['pagination']['count'], col.count
 	end
 	def test_RetrieveBrowser
-		retClass = PlatformBrowser
+		retClass = LeanTesting::PlatformBrowser
 		resp = robj(['_id', 'name'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
@@ -539,11 +539,11 @@ class MockRequestsTest < MiniTest::Test
 	end
 	def test_ListBrowserVersions
 		colName = 'versions'
-		retClass = PlatformBrowserVersion
+		retClass = LeanTesting::PlatformBrowserVersion
 		resp = rcol(colName, ['_id', 'name'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
-		col = PlatformBrowser.new(@client, {'id'=> 0}).versions.all
+		col = LeanTesting::PlatformBrowser.new(@client, {'id'=> 0}).versions.all
 
 		assert_equal resp[colName], col.toArray
 		assert_instance_of retClass, col.collection[0]

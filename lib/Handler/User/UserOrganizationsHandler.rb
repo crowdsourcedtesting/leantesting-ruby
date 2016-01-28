@@ -1,14 +1,16 @@
-class UserOrganizationsHandler < EntityHandler
+module LeanTesting
+  class UserOrganizationsHandler < LeanTesting::EntityHandler
 
-	def all(filters = nil)
-		if !filters
-			filters = {}
-		end
+  	def all(filters = nil)
+  		if !filters
+  			filters = {}
+  		end
 
-		super
+  		super
 
-		request = APIRequest.new(@origin, '/v1/me/organizations', 'GET')
-		EntityList.new(@origin, request, UserOrganization, filters)
-	end
+  		request = APIRequest.new(@origin, '/v1/me/organizations', 'GET')
+  		EntityList.new(@origin, request, UserOrganization, filters)
+  	end
 
+  end
 end

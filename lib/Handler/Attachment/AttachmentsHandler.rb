@@ -1,17 +1,19 @@
-class AttachmentsHandler < EntityHandler
+module LeanTesting
+	class AttachmentsHandler < LeanTesting::EntityHandler
 
-	def find(id)
-		super
+		def find(id)
+			super
 
-		req = APIRequest.new(@origin, '/v1/attachments/' + id.to_s(), 'GET')
-		BugAttachment.new(@origin, req.exec)
+			req = APIRequest.new(@origin, '/v1/attachments/' + id.to_s(), 'GET')
+			BugAttachment.new(@origin, req.exec)
+		end
+
+		def delete(id)
+			super
+
+			req = APIRequest.new(@origin, '/v1/attachments/' + id.to_s(), 'DELETE')
+			req.exec
+		end
+
 	end
-
-	def delete(id)
-		super
-
-		req = APIRequest.new(@origin, '/v1/attachments/' + id.to_s(), 'DELETE')
-		req.exec
-	end
-
 end
