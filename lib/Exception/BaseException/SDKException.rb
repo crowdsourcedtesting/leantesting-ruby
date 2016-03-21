@@ -1,19 +1,21 @@
-class SDKException < Exception
+module LeanTesting
+	class SDKException < Exception
 
-	def initialize(message = nil)
-		super
+		def initialize(message = nil)
+			super
 
-		if !message
-			message = 'Unknown SDK Error'
-		else
-			message = 'SDK Error: ' + message
+			if !message
+				message = 'Unknown SDK Error'
+			else
+				message = 'SDK Error: ' + message
+			end
+
+			@message = message
 		end
 
-		@message = message
-	end
+		def message
+			@message
+		end
 
-	def message
-		@message
 	end
-
 end

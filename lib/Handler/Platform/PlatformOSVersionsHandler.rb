@@ -1,20 +1,22 @@
-class PlatformOSVersionsHandler < EntityHandler
+module LeanTesting
+	class PlatformOSVersionsHandler < LeanTesting::EntityHandler
 
-	def initialize(origin, osID)
-		super(origin)
+		def initialize(origin, osID)
+			super(origin)
 
-		@osID = osID
-	end
-
-	def all(filters = nil)
-		if !filters
-			filters = {}
+			@osID = osID
 		end
 
-		super
+		def all(filters = nil)
+			if !filters
+				filters = {}
+			end
 
-		request = APIRequest.new(@origin, '/v1/platform/os/' + @osID.to_s() + '/versions', 'GET')
-		EntityList.new(@origin, request, PlatformOSVersion, filters)
+			super
+
+			request = APIRequest.new(@origin, '/v1/platform/os/' + @osID.to_s() + '/versions', 'GET')
+			EntityList.new(@origin, request, PlatformOSVersion, filters)
+		end
+
 	end
-
 end
