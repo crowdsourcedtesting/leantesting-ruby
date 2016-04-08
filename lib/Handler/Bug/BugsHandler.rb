@@ -31,6 +31,7 @@ module LeanTesting
 				'title'              => false,
 				'status_id'          => false,
 				'severity_id'        => false,
+				'priority_id'        => false,
 				'project_version_id' => false,
 				'project_section_id' => false,
 				'type_id'            => false,
