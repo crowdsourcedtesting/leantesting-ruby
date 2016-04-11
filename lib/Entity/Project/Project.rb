@@ -8,6 +8,7 @@ module LeanTesting
 			:bugStatusScheme,
 			:bugSeverityScheme,
 			:bugReproducibilityScheme,
+			:bugPriorityScheme,
 			:bugs
 
 		def initialize(origin, data)
@@ -21,6 +22,7 @@ module LeanTesting
 			@bugStatusScheme          = ProjectBugStatusSchemeHandler.new(origin, data['id'])
 			@bugSeverityScheme        = ProjectBugSeveritySchemeHandler.new(origin, data['id'])
 			@bugReproducibilityScheme = ProjectBugReproducibilitySchemeHandler.new(origin, data['id'])
+			@bugPriorityScheme 				= ProjectBugPrioritySchemeHandler.new(origin, data['id'])
 
 			@bugs = ProjectBugsHandler.new(origin, data['id'])
 		end

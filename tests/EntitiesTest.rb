@@ -34,6 +34,7 @@ class EntitiesTest < MiniTest::Test
 				'bugStatusScheme'           => LeanTesting::ProjectBugStatusSchemeHandler,
 				'bugSeverityScheme'         => LeanTesting::ProjectBugSeveritySchemeHandler,
 				'bugReproducibilityScheme'  => LeanTesting::ProjectBugReproducibilitySchemeHandler,
+				'bugPriorityScheme'  				=> LeanTesting::ProjectBugPrioritySchemeHandler,
 
 				'bugs'          => LeanTesting::ProjectBugsHandler
 			}],
