@@ -262,7 +262,7 @@ class MockRequestsTest < MiniTest::Test
 		assert_equal resp['meta']['pagination']['total'], col.total
 		assert_equal resp['meta']['pagination']['total_pages'], col.totalPages
 		assert_equal resp['meta']['pagination']['count'], col.count
-		end
+	end
 	def test_ListProjectBugPriorityScheme
 		colName = 'scheme'
 		retClass = LeanTesting::ProjectBugScheme
