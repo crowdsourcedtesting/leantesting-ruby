@@ -263,6 +263,20 @@ class MockRequestsTest < MiniTest::Test
 		assert_equal resp['meta']['pagination']['total_pages'], col.totalPages
 		assert_equal resp['meta']['pagination']['count'], col.count
 	end
+	def test_ListProjectBugPriorityScheme
+		colName = 'scheme'
+		retClass = LeanTesting::ProjectBugScheme
+		resp = rcol(colName, ['_id', 'name'])
+		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
+
+		col = LeanTesting::Project.new(@client, {'id'=> 0}).bugPriorityScheme.all
+
+		assert_equal resp[colName], col.toArray
+		assert_instance_of retClass, col.collection[0]
+		assert_equal resp['meta']['pagination']['total'], col.total
+		assert_equal resp['meta']['pagination']['total_pages'], col.totalPages
+		assert_equal resp['meta']['pagination']['count'], col.count
+	end
 	# END PROJECT
 
 
@@ -277,7 +291,7 @@ class MockRequestsTest < MiniTest::Test
 		colName = 'bugs'
 		retClass = LeanTesting::Bug
 		resp = rcol(colName, ['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
-			'_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
+			'_project_section_id', '_type_id', '_reproducibility_id', '_priority_id', '_assigned_user_id', 'description',
 			'expected_results'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
@@ -292,13 +306,13 @@ class MockRequestsTest < MiniTest::Test
 	def test_CreateNewBug
 		retClass = LeanTesting::Bug
 		resp = robj(['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
-			'_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
+			'_project_section_id', '_type_id', '_reproducibility_id', '_priority_id', '_assigned_user_id', 'description',
 			'expected_results'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
 		obj = LeanTesting::Project.new(@client, {'id'=> 0}).bugs.create({
 			'title'=> '', 'status_id'=> 0, 'severity_id'=> 0, 'project_version_id'=> 0, 'project_section_id'=> 0,
-			'type_id'=> 0, 'reproducibility_id'=> 0, 'assigned_user_id'=> 0, 'description'=> '',
+			'type_id'=> 0, 'reproducibility_id'=> 0, 'priority_id'=> 0, 'assigned_user_id'=> 0, 'description'=> '',
 			'expected_results'=> ''
 		})
 
@@ -308,7 +322,7 @@ class MockRequestsTest < MiniTest::Test
 	def test_RetrieveExistingBug
 		retClass = LeanTesting::Bug
 		resp = robj(['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
-			'_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
+			'_project_section_id', '_type_id', '_reproducibility_id', '_priority_id', '_assigned_user_id', 'description',
 			'expected_results'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
@@ -320,12 +334,12 @@ class MockRequestsTest < MiniTest::Test
 	def test_UpdateBug
 		retClass = LeanTesting::Bug
 		resp = robj(['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
-			'_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
+			'_project_section_id', '_type_id', '_reproducibility_id', '_priority_id', '_assigned_user_id', 'description',
 			'expected_results'])
 		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
 
 		obj = @client.bugs.update(0, {
-			'title'=> '', 'status_id'=> 0, 'severity_id'=> 0, 'project_version_id'=> 0, 'project_section_id'=> 0,
+			'title'=> '', 'status_id'=> 0, 'severity_id'=> 0, 'priority_id'=> 0, 'project_version_id'=> 0, 'project_section_id'=> 0,
 			'type_id'=> 0, 'assigned_user_id'=> 0, 'description'=> '', 'expected_results'=> ''
 		})
 
