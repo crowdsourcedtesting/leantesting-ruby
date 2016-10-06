@@ -1,5 +1,6 @@
 # Global inclusions
 require 'bundler'
+require 'curl'
 Bundler.require(:default)
 
 # Relative autopath inclusion
