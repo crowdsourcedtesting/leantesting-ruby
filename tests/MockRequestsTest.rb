@@ -89,6 +89,16 @@ class MockRequestsTest < MiniTest::Test
 		assert_equal resp['meta']['pagination']['total_pages'], col.totalPages
 		assert_equal resp['meta']['pagination']['count'], col.count
 	end
+	def test_RetrieveExistingUserOrganization
+		retClass = LeanTesting::UserOrganization
+		resp = robj(['_id', 'name', 'alias', 'url', 'logo'])
+		@client.debugReturn = {'data'=> JSON.generate(resp), 'status'=> 200}
+
+		obj = @client.user.organizations.find(0)
+
+		assert_equal resp, obj.data
+		assert_instance_of retClass, obj
+	end
 	# END USER
 
 
