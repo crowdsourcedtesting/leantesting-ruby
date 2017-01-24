@@ -4,6 +4,9 @@ module LeanTesting
 			:sections,
 			:versions,
 			:users,
+			:testRuns,
+			:testCases,
+			:webhooks,
 			:bugTypeScheme,
 			:bugStatusScheme,
 			:bugSeverityScheme,
@@ -17,6 +20,10 @@ module LeanTesting
 			@sections = ProjectSectionsHandler.new(origin, data['id'])
 			@versions = ProjectVersionsHandler.new(origin, data['id'])
 			@users    = ProjectUsersHandler.new(origin, data['id'])
+
+			@testRuns  = ProjectTestRunsHandler(origin, data['id'])
+			@testCases = ProjectTestCasesHandler(origin, data['id'])
+			@webhooks  = ProjectWebhooksHandler(origin, data['id'])
 
 			@bugTypeScheme            = ProjectBugTypeSchemeHandler.new(origin, data['id'])
 			@bugStatusScheme          = ProjectBugStatusSchemeHandler.new(origin, data['id'])

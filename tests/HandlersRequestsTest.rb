@@ -29,6 +29,9 @@ class HandlersTest < MiniTest::Test
 			[LeanTesting::ProjectsHandler],
 			[LeanTesting::ProjectUsersHandler,										'requiresIDInConstructor'],
 			[LeanTesting::ProjectVersionsHandler,									'requiresIDInConstructor'],
+			[LeanTesting::ProjectTestCasesHandler,								'requiresIDInConstructor'],
+			[LeanTesting::ProjectTestRunsHandler,									'requiresIDInConstructor'],
+			[LeanTesting::ProjectWebhooksHandler,									'requiresIDInConstructor'],
 			[LeanTesting::UserHandler],
 			[LeanTesting::UserOrganizationsHandler]
 		]

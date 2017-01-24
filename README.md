@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/leantesting.svg)](https://badge.fury.io/rb/leantesting)
 
-**Ruby client for [Lean Testing API](https://leantesting.com/en/api-docs)**
+**Ruby client for [Lean Testing](https://leantesting.com/) API**
 
 You can sign up for a Lean Testing account at [https://leantesting.com](https://leantesting.com).
 
@@ -135,12 +135,33 @@ newVersion = leantesting.projects.find(3515).versions.create({
 p newVersion.data
 ```
 
+- List **Project Test cases**
+
+```ruby
+leantesting.projects.find(3515).testCases.all.toArray
+```
+
+- List **Project Test runs**
+
+```ruby
+leantesting.projects.find(3515).testRuns.all.toArray
+```
+
+- Retrieve **Test run** results
+```ruby
+leantesting.projects.find(3515).testRuns.find(123).data
+```
+
 
 - List **Project Users**
 ```ruby
 leantesting.projects.find(3515).users.all.toArray
 ```
 
+- Remove **Project Users**
+```ruby
+leantesting.projects.find(3515).users.delete(123)
+```
 
 - List **Bug Type Scheme**
 ```ruby

@@ -30,6 +30,11 @@ class EntitiesTest < MiniTest::Test
 				'versions'      => LeanTesting::ProjectVersionsHandler,
 				'users'         => LeanTesting::ProjectUsersHandler,
 
+				'testCases'         => LeanTesting::ProjectTestCasesHandler,
+				'testRuns'         => LeanTesting::ProjectTestRunsHandler,
+
+				'webhooks'         => LeanTesting::ProjectWebhooksHandler,
+
 				'bugTypeScheme'             => LeanTesting::ProjectBugTypeSchemeHandler,
 				'bugStatusScheme'           => LeanTesting::ProjectBugStatusSchemeHandler,
 				'bugSeverityScheme'         => LeanTesting::ProjectBugSeveritySchemeHandler,
@@ -42,6 +47,10 @@ class EntitiesTest < MiniTest::Test
 			[LeanTesting::ProjectSection],
 			[LeanTesting::ProjectUser],
 			[LeanTesting::ProjectVersion],
+			[LeanTesting::ProjectTestCase],
+			[LeanTesting::ProjectTestRun],
+			[LeanTesting::ProjectTestResult],
+			[LeanTesting::ProjectWebhook],
 			[LeanTesting::UserOrganization]
 		]
 	end

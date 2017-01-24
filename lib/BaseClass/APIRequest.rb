@@ -27,7 +27,7 @@ module LeanTesting
 			@default_ops = {									# Basic support for extended opts
 				'base_uri'	=> 'https://api.leantesting.com',	# assumed default for API base
 				'form_data'	=> false,							# sets content type to multipart/form-data if true
-				'params'	=> {}								# params to be pased in request
+				'params'	=> {}								# params to be passed in request
 			}
 
 			if !opts

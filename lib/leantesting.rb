@@ -30,7 +30,7 @@ module LeanTesting
 		end
 
 		#
-		# Function to retrieve curently attached token.
+		# Function to retrieve currently attached token.
 		#
 		# Returns:
 		#	String  -- if a token is attached
