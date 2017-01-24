@@ -6,7 +6,7 @@ module LeanTesting
   	def initialize(origin, data)
   		super
 
-			@tests = ProjectTestCasesHandler(origin, data['id'])
+			@tests = ProjectTestCasesHandler.new(origin, data['id'])
   	end
 
   end

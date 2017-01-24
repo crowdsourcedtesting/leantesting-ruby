@@ -38,7 +38,7 @@ module LeanTesting
 		end
 
 		def find(id, params = nil)
-			super
+			super(id)
 
 			if !params
 				params = {}

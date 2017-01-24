@@ -2,7 +2,7 @@ module LeanTesting
 	class BugsHandler < LeanTesting::EntityHandler
 
 		def find(id, params = nil)
-			super
+			super(id)
 
 			if !params
 				params = {}
