@@ -113,7 +113,7 @@ module LeanTesting
 			)
 
 			resp = req.exec
-			resp['access_token']
+			resp
 		end
 
 	end

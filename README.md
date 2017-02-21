@@ -86,6 +86,11 @@ client.user.getInformation
 client.user.organizations.all.toArray
 ```
 
+- Retrieve An Existing **User Organization**
+```ruby
+client.user.organizations.find(31).data
+```
+
 ----
 
 - List All **Projects**
