@@ -1,9 +1,9 @@
 module LeanTesting
-  class PlatformBrowserVersion < LeanTesting::Entity
+	class PlatformBrowserVersion < LeanTesting::Entity
 
-  	def initialize(origin, data)
-  		super
-  	end
+		def initialize(origin, data)
+			super
+		end
 
-  end
+	end
 end

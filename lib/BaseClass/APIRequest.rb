@@ -25,9 +25,9 @@ module LeanTesting
 		#
 		def initialize(origin, endpoint, method, opts = nil)
 			@default_ops = {									# Basic support for extended opts
-				'base_uri'	=> 'https://api.leantesting.com',	# assumed default for API base
-				'form_data'	=> false,							# sets content type to multipart/form-data if true
-				'params'	=> {}								# params to be pased in request
+				'base_uri'  => 'https://api.leantesting.com',	# assumed default for API base
+				'form_data' => false,							# sets content type to multipart/form-data if true
+				'params'    => {}								# params to be passed in request
 			}
 
 			if !opts
@@ -47,9 +47,9 @@ module LeanTesting
 			@opts = @default_ops.clone
 			self.updateOpts(opts)
 
-			@origin		= origin
-			@endpoint	= endpoint
-			@method		= method
+			@origin   = origin
+			@endpoint = endpoint
+			@method   = method
 		end
 
 		#
@@ -99,19 +99,19 @@ module LeanTesting
 			case @method
 			when 'GET'
 				callUrl += '?' + Curl::postalize(@opts['params'])
-				ch.url = callUrl
+				ch.url  = callUrl
 
 				ch.http_get
 			when 'POST'
 				if @opts['form_data'] == true && (@opts.has_key? 'file_path')
 					ch.headers['Content-Type'] = 'multipart/form-data'
-					ch.multipart_form_post = true
+					ch.multipart_form_post     = true
 
 					ch.http_post(Curl::PostField.file('file', @opts['file_path']))
 				else
 					jsonData = JSON.generate(@opts['params'])
 
-					ch.headers['Content-Type'] = 'application/json'
+					ch.headers['Content-Type']   = 'application/json'
 					ch.headers['Content-Length'] = jsonData.length
 
 					ch.http_post(jsonData)
@@ -119,7 +119,7 @@ module LeanTesting
 			when 'PUT'
 				jsonData = JSON.generate(@opts['params'])
 
-				ch.headers['Content-Type'] = 'application/json'
+				ch.headers['Content-Type']   = 'application/json'
 				ch.headers['Content-Length'] = jsonData.length
 
 				ch.http_put(jsonData)
@@ -127,14 +127,14 @@ module LeanTesting
 				ch.http_delete
 			end
 
-			curlData	= ch.body_str
-			curlStatus	= ch.status.to_i()
+			curlData   = ch.body_str
+			curlStatus = ch.status.to_i()
 
 			ch.close
 			ch = nil
 
 			{
-				'data' => curlData,
+				'data'   => curlData,
 				'status' => curlStatus
 			}
 		end
@@ -155,13 +155,13 @@ module LeanTesting
 		def exec
 			if @origin.debugReturn && @origin.debugReturn.has_key?('data') && @origin.debugReturn.has_key?('status')
 
-				curlData = @origin.debugReturn['data']
+				curlData   = @origin.debugReturn['data']
 				curlStatus = @origin.debugReturn['status']
 
 			else
 
 				callReturn = call
-				curlData = callReturn['data']
+				curlData   = callReturn['data']
 				curlStatus = callReturn['status']
 
 			end

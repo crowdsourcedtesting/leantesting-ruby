@@ -37,5 +37,23 @@ module LeanTesting
 			EntityList.new(@origin, request, ProjectSection, filters)
 		end
 
+		def find(id, params = nil)
+			super(id)
+
+			if !params
+				params = {}
+			end
+
+			req = APIRequest.new(
+				@origin,
+				'/v1/projects/' + @projectID.to_s() + '/sections/' + id.to_s(),
+				'GET',
+				{
+					'params' => params
+				}
+			)
+			ProjectSection.new(@origin, req.exec)
+		end
+
 	end
 end

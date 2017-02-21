@@ -1,17 +1,19 @@
 module LeanTesting
 	class BugsHandler < LeanTesting::EntityHandler
 
-		def find(id)
-			super
+		def find(id, params = nil)
+			super(id)
+
+			if !params
+				params = {}
+			end
 
 			req = APIRequest.new(
 				@origin,
 				'/v1/bugs/' + id.to_s(),
 				'GET',
 				{
-					'params' => {
-						'include' => 'steps,platform,attachments,comments,tags'
-					}
+					'params' => params
 				}
 			)
 			Bug.new(@origin, req.exec)

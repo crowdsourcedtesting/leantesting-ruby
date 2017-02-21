@@ -1,5 +1,5 @@
 module LeanTesting
-	class BugComment < LeanTesting::Entity
+	class ProjectTestCase < LeanTesting::Entity
 
 		def initialize(origin, data)
 			super

@@ -21,16 +21,16 @@ module LeanTesting
 		def initialize
 			@accessToken = nil
 
-			@auth			= OAuth2Handler.new(self)
-			@user			= UserHandler.new(self)
-			@projects		= ProjectsHandler.new(self)
-			@bugs			= BugsHandler.new(self)
-			@attachments	= AttachmentsHandler.new(self)
-			@platform		= PlatformHandler.new(self)
+			@auth        = OAuth2Handler.new(self)
+			@user        = UserHandler.new(self)
+			@projects    = ProjectsHandler.new(self)
+			@bugs        = BugsHandler.new(self)
+			@attachments = AttachmentsHandler.new(self)
+			@platform    = PlatformHandler.new(self)
 		end
 
 		#
-		# Function to retrieve curently attached token.
+		# Function to retrieve currently attached token.
 		#
 		# Returns:
 		#	String  -- if a token is attached

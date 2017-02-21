@@ -1,9 +1,13 @@
 module LeanTesting
-  class ProjectSection < LeanTesting::Entity
+	class ProjectSection < LeanTesting::Entity
+		attr_reader \
+			:tests
 
-  	def initialize(origin, data)
-  		super
-  	end
+		def initialize(origin, data)
+			super
 
-  end
+			@tests = ProjectTestCasesHandler.new(origin, data['id'])
+		end
+
+	end
 end

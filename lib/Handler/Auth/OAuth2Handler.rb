@@ -48,9 +48,9 @@ module LeanTesting
 			baseURL = 'https://app.leantesting.com/login/oauth/authorize'
 
 			params = {
-				'client_id'		=> clientID,
-				'redirect_uri'	=> redirectURI,
-				'scope'			=> scope
+				'client_id'    => clientID,
+				'redirect_uri' => redirectURI,
+				'scope'        => scope
 			}
 
 			if state
@@ -95,11 +95,11 @@ module LeanTesting
 			end
 
 			params = {
-				'grant_type'	=> grantType,
-				'client_id'		=> clientID,
-				'client_secret'	=> clientSecret,
-				'redirect_uri'	=> redirectURI,
-				'code'			=> code
+				'grant_type'    => grantType,
+				'client_id'     => clientID,
+				'client_secret' => clientSecret,
+				'redirect_uri'  => redirectURI,
+				'code'          => code
 			}
 
 			req = APIRequest.new(
@@ -107,8 +107,8 @@ module LeanTesting
 				'/login/oauth/access_token',
 				'POST',
 				{
-					'base_uri'	=> 'https://app.leantesting.com',
-					'params'	=> params
+					'base_uri' => 'https://app.leantesting.com',
+					'params'   => params
 				}
 			)
 

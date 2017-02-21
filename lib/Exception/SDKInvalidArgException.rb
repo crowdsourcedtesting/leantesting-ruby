@@ -1,17 +1,17 @@
 module LeanTesting
-  class SDKInvalidArgException < SDKException
+	class SDKInvalidArgException < SDKException
 
-  	def initialize(message = nil)
-  		@baseMessage = 'Invalid argument'
+		def initialize(message = nil)
+			@baseMessage = 'Invalid argument'
 
-  		if !message
-  			message = @baseMessage
-  		else
-  			message = @baseMessage + ': ' + message
-  		end
+			if !message
+				message = @baseMessage
+			else
+				message = @baseMessage + ': ' + message
+			end
 
-  		super
-  	end
+			super
+		end
 
-  end
+	end
 end
