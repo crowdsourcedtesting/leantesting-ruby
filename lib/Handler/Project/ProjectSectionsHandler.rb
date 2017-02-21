@@ -45,12 +45,12 @@ module LeanTesting
 			end
 
 			req = APIRequest.new(
-					@origin,
-					'/v1/projects/' + @projectID.to_s() + '/sections/' + id.to_s(),
-					'GET',
-					{
-							'params' => params
-					}
+				@origin,
+				'/v1/projects/' + @projectID.to_s() + '/sections/' + id.to_s(),
+				'GET',
+				{
+					'params' => params
+				}
 			)
 			ProjectSection.new(@origin, req.exec)
 		end

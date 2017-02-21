@@ -1,12 +1,12 @@
 module LeanTesting
-  class PlatformType < LeanTesting::Entity
-  	attr_reader :devices
+	class PlatformType < LeanTesting::Entity
+		attr_reader :devices
 
-  	def initialize(origin, data)
-  		super
+		def initialize(origin, data)
+			super
 
-  		@devices = PlatformTypeDevicesHandler.new(origin, data['id'])
-  	end
+			@devices = PlatformTypeDevicesHandler.new(origin, data['id'])
+		end
 
-  end
+	end
 end

@@ -1,17 +1,17 @@
 module LeanTesting
-  class SDKMissingArgException < SDKException
+	class SDKMissingArgException < SDKException
 
-  	def initialize(message = nil)
-  		@baseMessage = 'Missing argument'
+		def initialize(message = nil)
+			@baseMessage = 'Missing argument'
 
-  		if !message
-  			message = @baseMessage
-  		else
-  			message = @baseMessage + ' `' + message + '`'
-  		end
+			if !message
+				message = @baseMessage
+			else
+				message = @baseMessage + ' `' + message + '`'
+			end
 
-  		super
-  	end
+			super
+		end
 
-  end
+	end
 end

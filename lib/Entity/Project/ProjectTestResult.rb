@@ -1,9 +1,9 @@
 module LeanTesting
-  class ProjectTestResult < LeanTesting::Entity
+	class ProjectTestResult < LeanTesting::Entity
 
-  	def initialize(origin, data)
-  		super
-  	end
+		def initialize(origin, data)
+			super
+		end
 
-  end
+	end
 end

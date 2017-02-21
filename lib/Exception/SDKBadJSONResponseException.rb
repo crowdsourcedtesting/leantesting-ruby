@@ -1,17 +1,17 @@
 module LeanTesting
-  class SDKBadJSONResponseException < SDKException
+	class SDKBadJSONResponseException < SDKException
 
-  	def initialize(message = nil)
-  		@baseMessage = 'JSON remote response is inconsistent or invalid'
+		def initialize(message = nil)
+			@baseMessage = 'JSON remote response is inconsistent or invalid'
 
-  		if !message
-  			message = @baseMessage
-  		else
-  			message = @baseMessage + ' - ' + message
-  		end
+			if !message
+				message = @baseMessage
+			else
+				message = @baseMessage + ' - ' + message
+			end
 
-  		super
-  	end
+			super
+		end
 
-  end
+	end
 end

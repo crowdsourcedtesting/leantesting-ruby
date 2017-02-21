@@ -5,8 +5,8 @@ module LeanTesting
 	class Entity
 		attr_accessor :data
 
-		@origin	= nil # Reference to originating Client instance
-		@data	= nil # Internal entity object data
+		@origin = nil # Reference to originating Client instance
+		@data   = nil # Internal entity object data
 
 		#
 		# Constructs an Entity instance
@@ -26,8 +26,8 @@ module LeanTesting
 				raise SDKInvalidArgException, '`data` must be non-empty'
 			end
 
-			@origin	= origin
-			@data	= data
+			@origin = origin
+			@data   = data
 		end
 
 	end

@@ -1,9 +1,9 @@
 module LeanTesting
-  class PlatformOSVersion < LeanTesting::Entity
+	class PlatformOSVersion < LeanTesting::Entity
 
-  	def initialize(origin, data)
-  		super
-  	end
+		def initialize(origin, data)
+			super
+		end
 
-  end
+	end
 end

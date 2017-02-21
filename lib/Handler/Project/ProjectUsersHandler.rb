@@ -11,16 +11,16 @@ module LeanTesting
 			super
 
 			supports = {
-					'email' => true,
-					'role_slug' => true,
+				'email'     => true,
+				'role_slug' => true
 			}
 
 			if enforce(fields, supports)
 				req = APIRequest.new(
-						@origin,
-						'/v1/projects/' + @projectID.to_s() + '/users',
-						'POST',
-						{'params' => fields}
+					@origin,
+					'/v1/projects/' + @projectID.to_s() + '/users',
+					'POST',
+					{'params' => fields}
 				)
 
 				ProjectUser.new(@origin, req.exec)
@@ -31,9 +31,9 @@ module LeanTesting
 			super
 
 			req = APIRequest.new(
-					@origin,
-					'/v1/projects/' + @projectID.to_s() + '/users/' + id.to_s(),
-					'DELETE'
+				@origin,
+				'/v1/projects/' + @projectID.to_s() + '/users/' + id.to_s(),
+				'DELETE'
 			)
 			req.exec
 		end

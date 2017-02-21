@@ -19,7 +19,7 @@ module LeanTesting
 				'project_section_id' => false,
 				'type_id'            => false,
 				'reproducibility_id' => false,
-				'priority_id' => false,
+				'priority_id'        => false,
 				'assigned_user_id'   => false,
 				'description'        => false,
 				'expected_results'   => false,

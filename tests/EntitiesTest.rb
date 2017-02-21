@@ -8,40 +8,40 @@ class EntitiesTest < MiniTest::Test
 	def setup
 		@entityCollection = [
 			[LeanTesting::Bug, {
-				'comments'      => LeanTesting::BugCommentsHandler,
-				'attachments'   => LeanTesting::BugAttachmentsHandler
+				'comments'    => LeanTesting::BugCommentsHandler,
+				'attachments' => LeanTesting::BugAttachmentsHandler
 			}],
 			[LeanTesting::BugAttachment],
 			[LeanTesting::BugComment],
 			[LeanTesting::PlatformBrowser, {
-				'versions'      => LeanTesting::PlatformBrowserVersionsHandler
+				'versions' => LeanTesting::PlatformBrowserVersionsHandler
 			}],
 			[LeanTesting::PlatformBrowserVersion],
 			[LeanTesting::PlatformDevice],
 			[LeanTesting::PlatformOS, {
-				'versions'      => LeanTesting::PlatformOSVersionsHandler
+				'versions' => LeanTesting::PlatformOSVersionsHandler
 			}],
 			[LeanTesting::PlatformOSVersion],
 			[LeanTesting::PlatformType, {
-				'devices'       => LeanTesting::PlatformTypeDevicesHandler
+				'devices' => LeanTesting::PlatformTypeDevicesHandler
 			}],
 			[LeanTesting::Project, {
-				'sections'      => LeanTesting::ProjectSectionsHandler,
-				'versions'      => LeanTesting::ProjectVersionsHandler,
-				'users'         => LeanTesting::ProjectUsersHandler,
+				'sections'  => LeanTesting::ProjectSectionsHandler,
+				'versions'  => LeanTesting::ProjectVersionsHandler,
+				'users'     => LeanTesting::ProjectUsersHandler,
 
-				'testCases'     => LeanTesting::ProjectTestCasesHandler,
-				'testRuns'      => LeanTesting::ProjectTestRunsHandler,
+				'testCases' => LeanTesting::ProjectTestCasesHandler,
+				'testRuns'  => LeanTesting::ProjectTestRunsHandler,
 
-				'webhooks'      => LeanTesting::ProjectWebhooksHandler,
+				'webhooks'  => LeanTesting::ProjectWebhooksHandler,
 
-				'bugTypeScheme'             => LeanTesting::ProjectBugTypeSchemeHandler,
-				'bugStatusScheme'           => LeanTesting::ProjectBugStatusSchemeHandler,
-				'bugSeverityScheme'         => LeanTesting::ProjectBugSeveritySchemeHandler,
-				'bugReproducibilityScheme'  => LeanTesting::ProjectBugReproducibilitySchemeHandler,
-				'bugPriorityScheme'  				=> LeanTesting::ProjectBugPrioritySchemeHandler,
+				'bugTypeScheme'            => LeanTesting::ProjectBugTypeSchemeHandler,
+				'bugStatusScheme'          => LeanTesting::ProjectBugStatusSchemeHandler,
+				'bugSeverityScheme'        => LeanTesting::ProjectBugSeveritySchemeHandler,
+				'bugReproducibilityScheme' => LeanTesting::ProjectBugReproducibilitySchemeHandler,
+				'bugPriorityScheme'        => LeanTesting::ProjectBugPrioritySchemeHandler,
 
-				'bugs'          => LeanTesting::ProjectBugsHandler
+				'bugs' => LeanTesting::ProjectBugsHandler
 			}],
 			[LeanTesting::ProjectBugScheme],
 			[LeanTesting::ProjectSection],
