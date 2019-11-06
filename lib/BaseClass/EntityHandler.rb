@@ -76,8 +76,8 @@ module LeanTesting
 		#	SDKInvalidArgException if provided id param is not an integer.
 		#
 		def find(id)
-			if !id.is_a? Fixnum
-				raise SDKInvalidArgException, '`id` must be of type Fixnum'
+			if !id.is_a? Integer
+				raise SDKInvalidArgException, '`id` must be of type Integer'
 			end
 		end
 
